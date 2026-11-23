@@ -1,0 +1,33 @@
+REGEDIT4
+
+[HKEY_CLASSES_ROOT\ChromiumBrowser.WebView2]
+@="ChromiumActiveX.ChromiumBrowserControl"
+
+[HKEY_CLASSES_ROOT\ChromiumBrowser.WebView2\CLSID]
+@="{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}"
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}]
+@="ChromiumActiveX.ChromiumBrowserControl"
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\InprocServer32]
+@="mscoree.dll"
+"ThreadingModel"="Both"
+"Class"="ChromiumActiveX.ChromiumBrowserControl"
+"Assembly"="ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f"
+"RuntimeVersion"="v4.0.30319"
+"CodeBase"="file:///D:/rea/ChromiumActiveX.dll"
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\InprocServer32\1.0.0.0]
+"Class"="ChromiumActiveX.ChromiumBrowserControl"
+"Assembly"="ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f"
+"RuntimeVersion"="v4.0.30319"
+"CodeBase"="file:///D:/rea/ChromiumActiveX.dll"
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\ProgId]
+@="ChromiumBrowser.WebView2"
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\Implemented Categories\{62C8FE65-4EBB-45E7-B440-6E39B2CDBF29}]
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\Control]
+
+[HKEY_CLASSES_ROOT\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\Insertable]

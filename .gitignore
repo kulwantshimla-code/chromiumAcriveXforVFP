@@ -1,0 +1,22 @@
+# Build output that should be regenerated
+**/obj/
+**/bin/Debug/
+**/bin/Release/
+**/*.pdb
+**/*.cache
+**/*.Up2Date
+**/*.FileListAbsolute.txt
+**/*.GeneratedMSBuildEditorConfig.editorconfig
+
+# Visual Studio / VFP scratch files
+.vs/
+*.suo
+*.user
+*.FXP
+*.BAK
+*.SCX.bak
+*.SCT.bak
+
+# OS noise
+Thumbs.db
+Desktop.ini
