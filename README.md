@@ -44,15 +44,15 @@ sample/test.html                       sample page loaded by the smoke test
 For deployment to another machine, copy these files next to `vfp9.exe` (keep the folder structure):
 
 ```
-ChromiumActiveX.dll
-ChromiumActiveX.tlb
+bin\ChromiumActiveX.dll
+bin\ChromiumActiveX.tlb
 Microsoft.Web.WebView2.Core.dll
 Microsoft.Web.WebView2.WinForms.dll
 Microsoft.Web.WebView2.Wpf.dll
 runtimes\win-x86\native\WebView2Loader.dll
 ```
 
-Then install the WebView2 Runtime and register the control as described in section 4. If the DLL is not at `bin/ChromiumActiveX.dll` on the target machine, edit `$codebase` in `register-user.ps1` (or run `regasm /codebase` from that folder) before registering.
+Then install the WebView2 Runtime and register the control as described in section 4. The supplied scripts derive the DLL/TLB paths from this clone; no manual path editing is required.
 
 ---
 
@@ -117,13 +117,11 @@ From an **elevated** Command Prompt:
 cmd /c "ChromiumActiveX/register.cmd"
 ```
 
-`register.cmd` uses `C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe /codebase /tlb`, then imports `register-system.reg` to guarantee full 32-bit and 64-bit HKLM registration (including `Control`, `Insertable` and TypeLib keys). Without elevation it fails with:
+`register.cmd` uses `C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe /codebase /tlb`, then substitutes the clone paths into `register-system.reg` and imports the generated file to guarantee full 32-bit and 64-bit HKLM registration (including `Control`, `Insertable` and TypeLib keys). `register-system.reg` is a template with `__CODEBASE__`/`__TLB__` placeholders; do not import it directly. Without elevation the script fails with:
 
 ```
 RegAsm : error RA0000 : An error occurred while writing the registration information to the registry. Administrator permissions are needed to use the selected options. Use an administrator command prompt to complete these tasks.
 ```
-
-A pre-generated system-wide script is also available at `ChromiumActiveX/register.reg`.
 
 ### Verify registration
 
@@ -270,9 +268,7 @@ If your VFP reports `File BINDEVENTS.PRG does not exist`, your runtime predates 
 | `ChromiumActiveX/build.cmd` | Restore + Release x86 build. |
 | `ChromiumActiveX/register-user.ps1` | Per-user registration (no admin). |
 | `ChromiumActiveX/register.cmd` | System-wide RegAsm registration (admin required). |
-| `ChromiumActiveX/register.reg` | RegAsm-generated HKCR registry script. |
-| `ChromiumActiveX/register-system.reg` | Full HKLM 32-bit/64-bit registration including `Control`, `Insertable` and TypeLib. |
-| `ChromiumActiveX/deploy-webview2-fix.ps1` | Deploys the writable-user-data-folder build after VFP9 is closed. |
+| `ChromiumActiveX/register-system.reg` | HKLM template with `__CODEBASE__`/`__TLB__` placeholders; populated by `register.cmd`. |
 | `sample/test-vfp.prg` | Ready-to-run VFP9 smoke test with `READ EVENTS` and close handling. |
 | `ChromiumActiveX/Properties\ChromiumActiveX.snk` | Strong-name key. |
 

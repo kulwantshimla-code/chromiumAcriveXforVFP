@@ -4,8 +4,10 @@ $root = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Software\Classes', $
 $clsid = '{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}'
 $libid = '{7B8C9D0E-1F2A-4B3C-8D4E-5F6A7B8C9D0E}'
 $assembly = 'ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f'
-$codebase = 'file:///D:/rea/ChromiumActiveX.dll'
-$tlb = 'D:\rea\ChromiumActiveX.tlb'
+$repoRoot = Split-Path -Parent $PSScriptRoot
+$dll = Join-Path $repoRoot 'bin\ChromiumActiveX.dll'
+$tlb = Join-Path $repoRoot 'bin\ChromiumActiveX.tlb'
+$codebase = 'file:///' + $dll.Replace('\', '/')
 
 function Set-Values($path, $values) {
     $key = $root.CreateSubKey($path)

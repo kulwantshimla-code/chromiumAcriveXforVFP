@@ -1,7 +1,7 @@
 * ChromiumActiveX VFP9 smoke test
-* Run with: DO D:\rea\ChromiumActiveX\test-vfp.prg
+* Run from the repository root with: DO sample\test-vfp.prg
 
-LOCAL lcOldAutoYield, lcTitle, loErr
+LOCAL lcOldAutoYield, lcHtml, lcTitle, loErr
 lcOldAutoYield = APPLICATION.AutoYield
 APPLICATION.AutoYield = .F.
 
@@ -10,7 +10,7 @@ TRY
    oForm = CREATEOBJECT("ChromiumForm")
    oForm.Caption = "Chromium WebView2"
    oForm.Width  = 900
-   oForm.Height = 450
+   oForm.Height = 650
    oForm.AutoCenter = .T.
 
    oForm.AddObject("web", "olecontrol", "ChromiumBrowser.WebView2")
@@ -30,10 +30,13 @@ TRY
 
    oForm.Show()
 
-   STRTOFILE('<html><head><title>HelloChromium</title></head><body>OK</body></html>', ;
-             'D:\rea\test.html')
-**   oForm.web.Object.Navigate("file:///D:/rea/test.html")
-   oForm.web.Object.Navigate("https:\\www.foxite.com")
+   lcHtml = FULLPATH("sample\test.html")
+   IF NOT FILE(lcHtml)
+      lcHtml = FULLPATH("test.html")
+   ENDIF
+   STRTOFILE('<html><head><title>HelloChromium</title></head><body>OK</body></html>', lcHtml)
+   oForm.web.Object.Navigate("file:///" + STRTRAN(lcHtml, "\", "/"))
+
    DO WHILE oForm.web.Object.ReadyState < 4
       DOEVENTS
    ENDDO

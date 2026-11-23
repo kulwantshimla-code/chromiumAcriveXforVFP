@@ -15,13 +15,13 @@ REGEDIT4
 "Class"="ChromiumActiveX.ChromiumBrowserControl"
 "Assembly"="ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f"
 "RuntimeVersion"="v4.0.30319"
-"CodeBase"="file:///D:/rea/ChromiumActiveX.dll"
+"CodeBase"="__CODEBASE__"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\InprocServer32\1.0.0.0]
 "Class"="ChromiumActiveX.ChromiumBrowserControl"
 "Assembly"="ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f"
 "RuntimeVersion"="v4.0.30319"
-"CodeBase"="file:///D:/rea/ChromiumActiveX.dll"
+"CodeBase"="__CODEBASE__"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\ProgId]
 @="ChromiumBrowser.WebView2"
@@ -52,13 +52,13 @@ REGEDIT4
 "Class"="ChromiumActiveX.ChromiumBrowserControl"
 "Assembly"="ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f"
 "RuntimeVersion"="v4.0.30319"
-"CodeBase"="file:///D:/rea/ChromiumActiveX.dll"
+"CodeBase"="__CODEBASE__"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\InprocServer32\1.0.0.0]
 "Class"="ChromiumActiveX.ChromiumBrowserControl"
 "Assembly"="ChromiumActiveX, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d89aa6c4567af41f"
 "RuntimeVersion"="v4.0.30319"
-"CodeBase"="file:///D:/rea/ChromiumActiveX.dll"
+"CodeBase"="__CODEBASE__"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\ProgId]
 @="ChromiumBrowser.WebView2"
@@ -81,7 +81,7 @@ REGEDIT4
 @="0"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\TypeLib\{7B8C9D0E-1F2A-4B3C-8D4E-5F6A7B8C9D0E}\1.0\0\win32]
-@="D:\\rea\\ChromiumActiveX.tlb"
+@="__TLB__"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\TypeLib\{7B8C9D0E-1F2A-4B3C-8D4E-5F6A7B8C9D0E}\1.0]
 @="ChromiumActiveX 1.0"
@@ -90,4 +90,4 @@ REGEDIT4
 @="0"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Classes\TypeLib\{7B8C9D0E-1F2A-4B3C-8D4E-5F6A7B8C9D0E}\1.0\0\win32]
-@="D:\\rea\\ChromiumActiveX.tlb"
+@="__TLB__"

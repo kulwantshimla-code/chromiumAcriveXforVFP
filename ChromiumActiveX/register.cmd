@@ -1,12 +1,27 @@
 @echo off
 setlocal
-set REGASM="C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe"
-%REGASM% "%~dp0..\ChromiumActiveX.dll" /codebase /tlb
+set "REGASM=C:\Windows\Microsoft.NET\Framework\v4.0.30319\RegAsm.exe"
+set "REPO=%~dp0.."
+for %%I in ("%REPO%") do set "REPO=%%~fI"
+set "DLL=%REPO%\bin\ChromiumActiveX.dll"
+set "TLB=%REPO%\bin\ChromiumActiveX.tlb"
+
+if not exist "%DLL%" (
+  echo Missing %DLL%
+  exit /b 1
+)
+
+%REGASM% "%DLL%" /codebase /tlb
 if errorlevel 1 exit /b %ERRORLEVEL%
-set REG64=%windir%\System32\reg.exe
-%REG64% import "%~dp0register-system.reg" >nul
-set REG32=%windir%\SysWOW64\reg.exe
-if not exist "%REG32%" set REG32=reg.exe
-%REG32% add "HKCR\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\Control" /f >nul
-%REG32% add "HKCR\CLSID\{C6D5E4F3-A2B1-4C0D-8E7F-1A2B3C4D5E6F}\Insertable" /f >nul
-exit /b 0
+
+set "CODEBASE=file:///%DLL:\=/%"
+set "TLBREG=%TLB:\=\\%"
+set "TMPREG=%TEMP%\chromiumactivex-system-%RANDOM%.reg"
+
+powershell -NoProfile -Command "$t = Get-Content -Raw -LiteralPath '%~dp0register-system.reg'; $t = $t.Replace('__CODEBASE__','%CODEBASE%').Replace('__TLB__','%TLBREG%'); [IO.File]::WriteAllText('%TMPREG%',$t)"
+if errorlevel 1 exit /b %ERRORLEVEL%
+
+%windir%\System32\reg.exe import "%TMPREG%" >nul
+set "RC=%ERRORLEVEL%"
+del "%TMPREG%" >nul 2>&1
+exit /b %RC%
